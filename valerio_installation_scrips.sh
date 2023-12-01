@@ -1,5 +1,5 @@
 #!/bin/bash
-#Install mysql, apache, mongodb, postgres
+#Install mysql, apache, mongodb
 echo -n "do you want install 1) apache 2) mysql 3) mongodb 4)Postgres?"
 
 while true; do
@@ -17,6 +17,9 @@ break
 elif [[ "$num" == '4' ]]; then
 sudo apt update -y && sudo apt install postgresql-server-dev-all -y
 break
-   fi
+else 
+   echo "You did not enter a correct value"
+break
+fi
 done
 
