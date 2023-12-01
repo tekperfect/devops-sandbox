@@ -1,0 +1,23 @@
+!/bin/bash
+
+echo "Welcome to the Step Yo Game Up script installer
+read -p "Do you want to step your game up?
+
+If [ "$install_choice" == "yes"  ];
+then
+	echo "That's a bet! Let me hook you up."
+	 sudo apt-get install -y apache2 mysql-server gnupq curl
+	.
+else
+	
+	statement4
+	.
+fi
+
+
+sudo apt list --installed
+sudo apt list --upgradeable
+
+sudo apt-get install apache2 
+sudo apt-get install mysql-server -y
+sudo apt-get install gnupq curl
