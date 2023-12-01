@@ -1,5 +1,5 @@
 #!/bin/bash
-#Install mysql, apache, mongodb
+#Install mysql, apache, mongodb, postgres
 echo -n "do you want install 1) apache 2) mysql 3) mongodb 4)Postgres?"
 
 while true; do
