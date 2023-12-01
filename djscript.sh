@@ -3,6 +3,7 @@
 install-webserver() {
 	echo "Installing webserver"
 	sudo apt install apache2 -y
+	sudo apt update -y
 	echo "Webserver installed"
 }
 #Function to install a database
