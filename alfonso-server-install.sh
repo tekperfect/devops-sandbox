@@ -3,7 +3,7 @@
 echo -n "Would you like to install a Web Server or Database Server?... Enter 1 for Apache, 2 for MySQL, 3 for Postgres, or 4 for MongoDB: "
 read VAR
 	if [[ $VAR = 1 ]]; then
-      		sudo apt install apache2 -y
+      		sudo apt update && sudo apt install apache2 -y
 	fi
 	if [[ $VAR = 2 ]]; then
     		sudo apt install mysql-server-8.0 -y
