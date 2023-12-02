@@ -1,34 +1,54 @@
 #!/bin/bash
-#Function to install a webserver
-install-webserver() {
-	echo "Installing webserver"
-	sudo apt install apache2 -y
-	sudo apt update -y
-	echo "Webserver installed"
+# Function to install Apache2
+install_Apache2() {
+   echo "Installing Apache2"
+   sudo apt update -y
+   sudo apt install apache2 -y
+   echo "Apache2 installed"
 }
-#Function to install a database
-install-database() {
-	echo " Installing Database"
-	sudo apt install mysql-server -y && sudo apt install postgresql-server-dev-all -y
-	echo " Database installed"
+
+# Function to install MySQL-server
+install_MySQL_server() {
+   echo "Installing MySQL-server"
+   sudo apt install mysql-server -y
+   echo "MySQL-server installed"
 }
-#Main script
-echo "Do you want to install a webserver or a database? (yes or no)"
+
+# Function to install Postgres
+install_Postgres() {
+   echo "Installing Postgres"
+   sudo apt install postgresql-server-dev-all -y
+   echo "Postgres installed"
+}
+
+# Function to install MongoDB
+install_MongoDB() {
+   echo "Installing MongoDB"
+   sudo apt-get install gnupg curl
+curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+   echo "MongoDB installed"
+}
+
+# Main script
+echo "Do you want to install Apache2, MySQL, Postgres, or MongoDB? (yes or
+no)"
 read user_choice
 
 if [ "$user_choice" = "yes" ]; then
+   echo "Which one do you want to install? (Apache2, MySQL, Postgres, or
+MongoDB)"
+   read installation_choice
 
-	echo "Which one do you want to install? (webserver/database)"
-
-	read installation_choice
-
-	if [ "$installation_choice" = "webserver" ]; then
-	install-webserver
-	elif [ "$installation_choice" = "database" ] ; then
-	install-database
-	else
-	    echo "Invalid choice. Existing"
-	fi
+   case "$installation_choice" in
+       "Apache2") install_Apache2 ;;
+       "MySQL") install_MySQL_server ;;
+       "Postgres") install_Postgres ;;
+       "MongoDB") install_MongoDB ;;
+       *) echo "Invalid choice. Exiting" ;;
+   esac
 else
-	echo " Existing without installation"
+   echo "Exiting without installation"
 fi
