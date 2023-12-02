@@ -1,6 +1,3 @@
-
-
-
 #!/bin/bash
 
 echo "Select a database to install:"
@@ -10,6 +7,15 @@ echo "3. MongoDB"
 echo "4. Postgres"
 
 read -p "Enter the number of your choice: " choice
+
+# Check if the input is a number between 1 and 4. This ensures that the input is a single digit between 1 and 4 
+if [[ ! $choice =~ ^[1-4]$ ]]; then
+    echo "Invalid input. Please enter a number between 1 and 4."
+    exit 1
+fi
+
+# Update package lists This line updates the package lists to ensure that you are installing the latest available versions of the packages.
+sudo apt-get update
 
 if [[ $choice -eq 1 ]]; then
     # Install Apache2
@@ -31,7 +37,6 @@ elif [[ $choice -eq 4 ]]; then
     sudo apt-get install postgresql
     echo "Postgres installed successfully."
 
-else
-    echo "Invalid selection. Please choose a number between 1 and 4."
 fi
+
 
