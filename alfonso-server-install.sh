@@ -1,3 +1,4 @@
+# Test comment
 #!/bin/bash
 
 echo -n "Would you like to install a Web Server or Database Server?... Enter 1 for Web or 2 for Database: "
