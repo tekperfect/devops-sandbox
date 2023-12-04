@@ -10,14 +10,10 @@ then
 	.
 else
 	
-	statement4
+	echo "It's all good. Maybe next time."
 	.
 fi
 
 
 sudo apt list --installed
 sudo apt list --upgradeable
-
-sudo apt-get install apache2 
-sudo apt-get install mysql-server -y
-sudo apt-get install gnupq curl
